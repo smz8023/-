@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url'
 import path from 'node:path'
 import os from 'node:os'
 import { update } from './update'
+import {startFfmpeg} from './startFfmpeg'
 
 const require = createRequire(import.meta.url)
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
@@ -79,6 +80,8 @@ async function createWindow() {
 
   // Auto update
   update(win)
+
+  startFfmpeg(win)
 }
 
 app.whenReady().then(createWindow)

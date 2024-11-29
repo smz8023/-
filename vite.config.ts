@@ -64,6 +64,21 @@ export default defineConfig(({ command }) => {
         renderer: {},
       }),
     ],
+    css: {
+      preprocessorOptions: {
+        less: {
+          // 在这里配置 Less 变量等，例如：
+          javascriptEnabled: true,
+          modifyVars: {
+            
+          },
+        },
+      },
+      modules: {
+        // 对 CSS Modules 的全局配置
+        generateScopedName: '[name]__[local]___[hash:base64:5]', // 自定义类名格式
+      },
+    },
     server: process.env.VSCODE_DEBUG && (() => {
       const url = new URL(pkg.debug.env.VITE_DEV_SERVER_URL)
       return {
